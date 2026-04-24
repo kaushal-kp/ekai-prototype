@@ -1,0 +1,28 @@
+<div class="page-header">
+  <div><div class="page-title">Timetable</div><div class="page-subtitle">Class schedules, teacher assignments, and substitutions</div></div>
+  <div class="page-actions">
+    <button class="btn btn-secondary" onclick="EKAI.notify('Export','Timetable exported as PDF','success')">⬇️ Export PDF</button>
+    <button class="btn btn-primary" onclick="EKAI.notify('AI','AI timetable generation started...','info')">🤖 AI Generate</button>
+  </div>
+</div>
+<div style="display:flex;gap:12px;margin-bottom:16px;align-items:center;">
+  <select class="form-select" style="height:34px;width:160px;font-size:13px;"><option>Grade 10-A</option><option>Grade 10-B</option><option>Grade 9-A</option></select>
+  <div style="display:flex;gap:8px;">
+    <button class="btn btn-sm btn-ghost" onclick="EKAI.notify('','','')">← Prev Week</button>
+    <span style="font-size:13px;font-weight:600;padding:0 8px;line-height:30px;">Week of Mar 2–8, 2026</span>
+    <button class="btn btn-sm btn-ghost">Next Week →</button>
+  </div>
+</div>
+<div class="card">
+  <div style="overflow-x:auto;">
+    <table style="min-width:700px;">
+      <thead>
+        <tr>
+          <th style="width:100px;">Period</th>
+          <th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>

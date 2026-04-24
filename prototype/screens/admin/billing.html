@@ -1,0 +1,56 @@
+<div class="screen-container" data-screen="admin/billing">
+  <div class="page-header">
+    <div><h1 class="page-title">Billing & Finance</h1><p class="page-subtitle">Subscriptions, payments, and revenue overview</p></div>
+    <button class="btn btn-outline" onclick="EKAI.notify('Export','Financial report downloaded.','success')">Export Report</button>
+  </div>
+  <div class="stats-grid mb-4">
+    <div class="stat-card" style="border-left:4px solid var(--success);"><div class="stat-icon" style="background:#D3F9D8;">💰</div><div class="stat-content"><span class="stat-label">MRR</span><span class="stat-value">₹1.24Cr</span><span class="stat-change positive">+8.2% vs last month</span></div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:#E8F4FD;">📅</div><div class="stat-content"><span class="stat-label">ARR</span><span class="stat-value">₹14.9Cr</span><span class="stat-change positive">On track</span></div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:#D3F9D8;">✅</div><div class="stat-content"><span class="stat-label">Active Subs</span><span class="stat-value">1,803</span><span class="stat-change positive">+124 this month</span></div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:#FFE3E3;">⚠</div><div class="stat-content"><span class="stat-label">Payment Due</span><span class="stat-value" style="color:var(--warning);">34</span><span class="stat-change negative">Invoices overdue</span></div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px;">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Revenue Trend</h3></div>
+      <div class="card-body"><div id="rev-chart" style="height:200px;"></div></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Plan Distribution</h3></div>
+      <div class="card-body"><div id="plan-donut" style="height:200px;"></div></div>
+    </div>
+  </div>
+  <div class="card mt-4">
+    <div class="card-header"><h3 class="card-title">Recent Transactions</h3></div>
+    <div class="card-body" style="padding:0;">
+      <table class="table">
+        <thead><tr><th>School / Organisation</th><th>Plan</th><th>Amount</th><th>Date</th><th>Status</th><th>Invoice</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ryan International Group</strong></td><td>Enterprise (12 schools)</td><td>₹1,44,000</td><td>Apr 1, 2026</td><td><span class="badge badge-success">Paid</span></td><td><button class="btn btn-sm btn-outline" onclick="EKAI.notify('Invoice','Invoice INV-2026-0412 downloaded.','success')">Download</button></td></tr>
+          <tr><td><strong>DAV Group Delhi</strong></td><td>Pro (8 schools)</td><td>₹72,000</td><td>Apr 1, 2026</td><td><span class="badge badge-success">Paid</span></td><td><button class="btn btn-sm btn-outline">Download</button></td></tr>
+          <tr><td><strong>KV Sangathan (Pilot)</strong></td><td>Govt. Pilot (50 schools)</td><td>₹0</td><td>Mar 15, 2026</td><td><span class="badge badge-info">Pilot</span></td><td><button class="btn btn-sm btn-outline">View MoU</button></td></tr>
+          <tr><td><strong>Sunshine International</strong></td><td>Basic</td><td>₹4,999</td><td>Apr 3, 2026</td><td><span class="badge badge-warning">Overdue</span></td><td><button class="btn btn-sm btn-primary" onclick="EKAI.notify('Reminder','Payment reminder sent.','success')">Send Reminder</button></td></tr>
+          <tr><td><strong>TechCorp India</strong></td><td>Employer — Business</td><td>₹4,999</td><td>Apr 1, 2026</td><td><span class="badge badge-success">Paid</span></td><td><button class="btn btn-sm btn-outline">Download</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  setTimeout(()=>{
+    if(window.EKAI){
+      EKAI.renderBarChart('rev-chart',{
+		labels:['Nov','Dec','Jan','Feb','Mar','Apr'],
+		values:[84,92,98,105,115,124],
+		colors:['#1C2B4A','#1C2B4A','#1C2B4A','#1C2B4A','#1C2B4A','#1C2B4A']
+      },{height:190,showValues:true});
+      EKAI.renderDonutChart('plan-donut',[
+        {label:'Basic',value:42,color:'#ADB5BD'},
+        {label:'Pro',value:34,color:'#3B5BDB'},
+        {label:'Enterprise',value:18,color:'#1C2B4A'},
+        {label:'Trial',value:6,color:'#F59F00'}
+      ],{size:190,title:'1,803',subtitle:'Schools'});
+    }
+  },100);
+})();
+</script>

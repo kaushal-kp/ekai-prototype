@@ -13,3 +13,98 @@
      AUTH SCREEN
 ════════════════════════════════════════════════════ -->
 <div id="auth-screen" class="auth-page" style="display:none;">
+  <div class="auth-left">
+    <div style="position:relative;z-index:1;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:48px;">
+        <div style="width:48px;height:48px;background:var(--ekai-primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;color:white;">E</div>
+        <div style="color:white;font-size:28px;font-weight:800;letter-spacing:-0.5px;">EKAI</div>
+        <div style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);font-size:11px;padding:2px 8px;border-radius:20px;">v1.0 Beta</div>
+      </div>
+
+      <h1 style="color:white;font-size:42px;font-weight:800;line-height:1.15;margin-bottom:16px;letter-spacing:-1px;">
+        The Operating System<br>for India's Education.
+      </h1>
+      <p style="color:rgba(255,255,255,0.65);font-size:17px;line-height:1.65;margin-bottom:40px;max-width:420px;">
+        APAAR-native platform connecting 10,000+ schools, 10M students, parents, and employers — eliminating 50% of paperwork and enabling verified academic identities.
+      </p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:420px;">
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:16px;">
+          <div style="font-size:24px;margin-bottom:6px;">🏫</div>
+          <div style="color:white;font-weight:600;font-size:14px;">School Hub</div>
+          <div style="color:rgba(255,255,255,0.5);font-size:12px;margin-top:2px;">30+ screens, full ERP ops</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:16px;">
+          <div style="font-size:24px;margin-bottom:6px;">👨‍👩‍👧</div>
+          <div style="color:white;font-weight:600;font-size:14px;">Parent Hub</div>
+          <div style="color:rgba(255,255,255,0.5);font-size:12px;margin-top:2px;">24 screens, mobile-first</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:16px;">
+          <div style="font-size:24px;margin-bottom:6px;">🎓</div>
+          <div style="color:white;font-weight:600;font-size:14px;">Student Hub</div>
+          <div style="color:rgba(255,255,255,0.5);font-size:12px;margin-top:2px;">26 screens, APAAR identity</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:16px;">
+          <div style="font-size:24px;margin-bottom:6px;">🏢</div>
+          <div style="color:white;font-weight:600;font-size:14px;">Employer Hub</div>
+          <div style="color:rgba(255,255,255,0.5);font-size:12px;margin-top:2px;">19+ screens, verification</div>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;color:rgba(255,255,255,0.35);font-size:12px;">
+        🔒 Interactive prototype — all data is simulated &nbsp;·&nbsp; Built for EKAI v1.0
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-right">
+    <div style="max-width:360px;width:100%;">
+      <h2 style="font-size:28px;font-weight:800;margin-bottom:6px;letter-spacing:-0.5px;">Sign in to EKAI</h2>
+      <p style="color:var(--text-muted);margin-bottom:32px;font-size:14px;">Choose a demo role to explore the platform</p>
+      <div id="auth-role-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;">
+        <div class="role-card" onclick="selectRole('school-admin')" data-key="school-admin"><div class="role-card-icon">🏫</div><div class="role-card-title">School Admin</div><div class="role-card-sub">DPS Vasant Kunj</div></div>
+        <div class="role-card" onclick="selectRole('class-teacher')" data-key="class-teacher"><div class="role-card-icon">👨‍🏫</div><div class="role-card-title">Class Teacher</div><div class="role-card-sub">Grade 9 — Section A</div></div>
+        <div class="role-card" onclick="selectRole('parent')" data-key="parent"><div class="role-card-icon">👨‍👩‍👧</div><div class="role-card-title">Parent</div><div class="role-card-sub">2 children enrolled</div></div>
+        <div class="role-card" onclick="selectRole('student')" data-key="student"><div class="role-card-icon">🎓</div><div class="role-card-title">Student</div><div class="role-card-sub">Grade 10 — APAAR linked</div></div>
+        <div class="role-card" onclick="selectRole('employer')" data-key="employer"><div class="role-card-icon">🏢</div><div class="role-card-title">Employer</div><div class="role-card-sub">Infosys Limited</div></div>
+        <div class="role-card" onclick="selectRole('platform-admin')" data-key="platform-admin"><div class="role-card-icon">⚙️</div><div class="role-card-title">Platform Admin</div><div class="role-card-sub">EKAI Ops Team</div></div>
+      </div>
+      <div id="auth-selected-user" style="display:none;"></div>
+      <button id="auth-login-btn" class="btn btn-primary w-full btn-xl" style="display:none;" onclick="doLogin()">Enter EKAI →</button>
+      <div id="auth-error" style="display:none;" class="alert alert-danger mt-3"><span class="alert-icon">⚠️</span><span>Please select a role</span></div>
+    </div>
+  </div>
+</div>
+
+<div id="app-shell" style="display:none;flex:1;">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><div class="sidebar-logo-mark">E</div><div class="sidebar-logo-text">EKAI</div><div class="sidebar-logo-badge">Beta</div></div>
+    <div class="sidebar-hub-selector" id="sidebar-hub-selector"></div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-footer"><div id="sidebar-user"></div></div>
+  </aside>
+  <div class="main-wrapper" id="main-wrapper">
+    <header class="topbar">
+      <button class="topbar-btn" id="sidebar-toggle" onclick="toggleSidebar()"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><rect x="1" y="3" width="16" height="2" rx="1"/><rect x="1" y="8" width="16" height="2" rx="1"/><rect x="1" y="13" width="16" height="2" rx="1"/></svg></button>
+      <div class="topbar-breadcrumb" id="topbar-breadcrumb"></div>
+      <div class="topbar-actions">
+        <div class="search-bar"><span class="search-icon">🔍</span><input type="text" class="form-input" placeholder="Search..." id="global-search"></div>
+        <button class="topbar-btn" onclick="EKAI.showNotifications()">🔔</button>
+        <button class="topbar-btn" onclick="EKAI.showHelp()">❓</button>
+        <div id="topbar-user-avatar" style="cursor:pointer;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:white;background:var(--ekai-primary);" onclick="EKAI.showUserMenu()"></div>
+      </div>
+    </header>
+    <main id="page-content" class="page-content"></main>
+  </div>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+<script>
+let selectedRole=null;
+function selectRole(k){selectedRole=k;document.querySelectorAll('.role-card').forEach(c=>c.classList.remove('selected'));document.querySelector(`.role-card[data-key="${k}"]`)?.classList.add('selected');const u=EKAI.demoUsers[k];if(!u)return;document.getElementById('auth-selected-user').style.display='block';document.getElementById('auth-login-btn').style.display='flex';document.getElementById('auth-error').style.display='none';}
+function doLogin(){if(!selectedRole){document.getElementById('auth-error').style.display='flex';return;}EKAI.auth.login(selectedRole);EKAI.renderApp();EKAI.notify('Welcome to EKAI',`Signed in as ${EKAI.state.currentUser.name}`,'success');}
+document.addEventListener('DOMContentLoaded',()=>{const o=EKAI.renderApp.bind(EKAI);EKAI.renderApp=function(){o();};});
+</script>
+<script src="app.js"></script>
+</body>
+</html>
